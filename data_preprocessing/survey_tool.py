@@ -1,6 +1,6 @@
 import pandas as pd
 
-def process_survey_data(file_path, sum_score_keyword, output_file_name):
+def process_survey_data(file_path, sum_score_keyword, output_file_name,custom_sum_col=None):
     """
     Process survey data to clean and compute mean sum scores per ID.
 
@@ -18,13 +18,22 @@ def process_survey_data(file_path, sum_score_keyword, output_file_name):
     # Step 2: Lowercase all column names
     df.columns = df.columns.str.lower()
     df=df.rename(columns={"non-identifying keys":"id"})
-    # Step 3: Find and rename the sum score column
-    sum_col = next((col for col in df.columns if "sum" in col), None)
-    if sum_col:
+
+    if custom_sum_col:
+        sum_col = custom_sum_col.lower()
         df = df.rename(columns={sum_col: sum_score_keyword})
+    else:
+        # Automatically detect sum_col if no custom column is specified
+        sum_col = next((col for col in df.columns if "sum" in col), None) or \
+                  next((col for col in df.columns if "total" in col), None) or \
+                  next((col for col in df.columns if "combined" in col), None)
+        if not sum_col:
+            print("Numeric Sum metric missing, file cannot be processed")
+            return None
+        else:
+            df = df.rename(columns={sum_col: sum_score_keyword})
 
-    print(f"After Renaming Columns: {df.shape}")
-
+    print(df.columns)
     # Step 4: Drop rows where all non-metadata columns are NaN
     meta_cols = ["id", "survey start date", "survey end date", "survey completion date", "survey skipped"]
     subset_cols = df.columns[~df.columns.isin(meta_cols)]
@@ -46,6 +55,9 @@ def process_survey_data(file_path, sum_score_keyword, output_file_name):
 
     if missing_sum_score > 0:
         print("Warning: There are missing values in the sum score column!")
+    if missing_sum_score==len(df):
+        print("All files in the data frame are missing file cannot be processed")
+        return None
 
     # Step 8: Pivot table to compute mean sum score per ID
     df = df.pivot_table(index="id", values=sum_score_keyword, aggfunc="mean")
