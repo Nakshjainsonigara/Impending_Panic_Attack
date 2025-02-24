@@ -33,7 +33,6 @@ def process_survey_data(file_path, sum_score_keyword, output_file_name,custom_su
         else:
             df = df.rename(columns={sum_col: sum_score_keyword})
 
-    print(df.columns)
     # Step 4: Drop rows where all non-metadata columns are NaN
     meta_cols = ["id", "survey start date", "survey end date", "survey completion date", "survey skipped"]
     subset_cols = df.columns[~df.columns.isin(meta_cols)]
