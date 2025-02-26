@@ -61,9 +61,8 @@ def process_survey_data(file_path, sum_score_keyword, output_file_name,custom_su
     # Step 8: Pivot table to compute mean sum score per ID
     df = df.pivot_table(index="id", values=sum_score_keyword, aggfunc="mean")
     print(f"After Pivoting: {df.shape}")
-
     # Step 9: Save the final cleaned CSV
-    output_path = "../data_processed/"+output_file_name
-    df.to_csv(output_path, index=False)
+    output_path = "../data_processed/questionaire_data_p"+"/"+output_file_name
+    df.to_csv(output_path, index=True)
     print(f"Process completed. File saved at {output_path}")
     return df
