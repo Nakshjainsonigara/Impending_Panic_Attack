@@ -1,4 +1,4 @@
-id,Date,Amount smoked,Breakfast,Lunch,Dinner,Morning snack,Afternoon snack,Midnight snacks,Menstruation
+id,date,amount smoked,breakfast,lunch,dinner,morning snack,afternoon snack,midnight snacks,menstruation
 SYM2-1-278,2021-05-20,0.0,N,N,N,N,N,N,Y
 SYM2-1-288,2021-04-18,0.0,N,N,N,N,N,N,Y
 SYM2-1-292,2021-06-08,1.0,Y,N,N,N,N,N,N

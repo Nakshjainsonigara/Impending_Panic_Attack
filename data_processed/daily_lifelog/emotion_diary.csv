@@ -1,4 +1,4 @@
-id,Date,Positive Mood,Negative Mood,Positive Energy,Negative Energy,Anxiety,Irritability
+id,date,positive mood,negative mood,positive energy,negative energy,anxiety,irritability
 SYM2-1-101,2021-03-03,1,0,3,-1,2,3
 SYM2-1-135,2021-03-17,0,-3,1,0,1,1
 SYM2-1-135,2021-03-30,0,-3,0,-2,1,2
