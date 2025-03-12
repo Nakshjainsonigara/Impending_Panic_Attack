@@ -4,8 +4,7 @@
 This research explores how digital phenotyping can help predict and mitigate panic attacks by analyzing behavioral patterns from digital interactions. Currently, I am working on preprocessing the data for modeling and plan to document the findings in a structured research report.  
 
 ## Model Performance & Next Steps
-An XGBoost model has been developed, achieving 90.3% accuracy in predicting panic attacks. The next phase involves enhancing the model with advanced techniques and integrating additional features to improve reliability. I am also exploring IoT-based connectivity to enable real-time monitoring and response mechanisms.
-
+An XGBoost model has been developed, now achieving 94% accuracy in predicting panic attacks, improving upon the previous 90.3%. The next phase involves enhancing the model with advanced techniques such as hyperparameter tuning, feature selection, and ensemble learning to improve reliability. I am also exploring IoT-based connectivity to enable real-time monitoring and response mechanisms.
 ## Open for Collaboration  
 This project is in its early stages, and I’m actively looking for feedback, suggestions, and potential collaborators. Feel free to connect if you're interested in:  
 - Sharing insights on digital phenotyping  
